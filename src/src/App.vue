@@ -1,33 +1,42 @@
 <template>
   <div id="app">
-    <div class="nav-box">
+    <div class="mobile-nav">
+      <span class="logo">Home</span>
+      <button type="button" class="navbar-toggle collapsed" @click="showNav(true)">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div :class="{ 'nav-box': true, 'active': toggle }">
+      <span class="icon-close" @click="showNav(false)">X</span>
       <ul>
         <li :class="{ active: $route.path === '/home'}">
-          <router-link to='home'>Home</router-link>
+          <a @click="changeRoute('/home')">Home</a>
         </li>
         <li :class="{ active: $route.path === '/dashboard'}">
-          <router-link to='dashboard'>Dashboard</router-link>
+          <a @click="changeRoute('/dashboard')">Dashboard</a>
         </li>
         <li :class="{ active: $route.path === '/team'}">
-          <router-link to='team'>Team</router-link>
+          <a @click="changeRoute('/team')">Team</a>
         </li>
         <li :class="{ active: $route.path === '/message'}">
-          <router-link to='message'>Message</router-link>
+          <a @click="changeRoute('/message')">Message</a>
         </li>
         <li :class="{ active: $route.path === '/course'}">
-          <router-link to='course'>Course</router-link>
+          <a @click="changeRoute('/course')">Course</a>
         </li>
         <li :class="{ active: $route.path === '/history'}">
-          <router-link to='history'>History</router-link>
+          <a @click="changeRoute('/history')">History</a>
         </li>
         <li :class="{ active: $route.path === '/library'}">
-          <router-link to='library'>Library</router-link>
+          <a @click="changeRoute('/library')">Library</a>
         </li>
         <li :class="{ active: $route.path === '/quiz'}">
-          <router-link to='quiz'>Quiz</router-link>
+          <a @click="changeRoute('/quiz')">Quiz</a>
         </li>
         <li :class="{ active: $route.path === '/task'}">
-          <router-link to='task'>Task List</router-link>
+          <a @click="changeRoute('/task')">Task List</a>
         </li>
       </ul>
     </div>
@@ -40,6 +49,22 @@
 <script>
 export default {
   name: 'App',
+  data(){
+    return {
+      toggle: false
+    }
+  },
+  methods: {
+    showNav(bool){
+      this.toggle = bool
+    },
+    changeRoute(path){
+      this.$router.push(path)
+      if(document.documentElement.clientWidth < 768){
+        this.toggle = false
+      }
+    }
+  }
 }
 </script>
 
@@ -52,9 +77,73 @@ export default {
   padding: 30px 50px;
   background-color: #AB397E;
 }
+@media (max-width: 768px) {
+  #app {
+    display: block;
+    padding: 10px;
+    background: linear-gradient(rgb(174,67,132), rgb(229,229,229));
+  }
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    .logo{
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      width: 100px;
+      text-align: center;
+      background-color: #C4C1C1;
+    }
+    .navbar-toggle{
+      line-height: 40px;
+      padding: 8px 8px 4px;
+      span{
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        margin-bottom: 4px;
+        background-color: #ff9f1c;
+      }
+    }
+  }
+  .nav-box{
+    padding-top: 20px !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100vh;
+    z-index: 1000;
+    background: linear-gradient(rgb(229,229,229), rgb(174,67,132), rgb(229,229,229));;
+    &.active{
+      display: block;
+    }
+    .icon-close{
+      display: block !important;
+      text-align: right;
+      padding: 20px;
+    }
+  }
+  .page-box{
+    height: auto !important;
+    padding: 10px !important;
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
+    background-color: transparent !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}
 .nav-box{
   width: 200px;
   padding-top: 60px;
+  .icon-close{
+    display: none;
+  }
   li{
     line-height: 48px;
     padding-left: 30px;

@@ -99,4 +99,49 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  #course-page{
+    padding: 0;
+    h2{
+      font-size: 20px;
+      margin: 20px 0;
+      img{
+        width: 20px;
+        padding-left: 8px;
+      }
+    }
+    .top1{
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .main{
+      display: block;
+      margin-top: 30px;
+      .left{
+        h2{
+          font-size: 18px;
+        }
+        h4{
+          font-size: 16px;
+        }
+        p{
+          width: 100%;
+          font-size: 14px;
+        }
+      }
+      .right{
+        h2{
+          font-size: 18px;
+        }
+        li{
+          line-height: 30px;
+        }
+        .btn{
+          width: calc(100vw - 40px);
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}
 </style>

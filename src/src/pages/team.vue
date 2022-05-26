@@ -1,6 +1,6 @@
 <template>
   <div id="team-page">
-    <div class="flex">
+    <div class="main-box flex">
       <div class="description">
         <h2>Your Group Task</h2>
         <div class="content">
@@ -117,5 +117,38 @@ export default {
 .member,
 .group{
   flex: 3;
+}
+@media (max-width: 768px) {
+  #team-page{
+    padding: 0;
+    .main-box{
+      display: block;
+      .description,.member,.group{
+        margin-right: 0px;
+        .content{
+          height: auto;
+        }
+        >p{
+          width: calc(100vw - 40px);
+          box-sizing: border-box;
+          padding: 20px;
+        }
+        h2{
+          font-size: 20px;
+          text-align: center;
+        }
+        h3{
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .time{
+      font-size: 20px;
+      span{
+        font-size: 14px;
+      }
+    }
+  }
 }
 </style>

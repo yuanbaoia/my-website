@@ -100,4 +100,44 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  .title{
+    font-size: 20px;
+  }
+  .news-box{
+    display: block;
+    margin-bottom: 20px;
+    .news-item{
+      margin-bottom: 10px;
+    }
+    .news-title{
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+  .tips-box{
+    display: block;
+    background-color: transparent;
+    .tips-item{
+      padding-right: 0;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      h3{
+        text-align: center;
+        font-size: 16px;
+        color: #333;
+        letter-spacing: 0px;
+      }
+      .list-group-item{
+        font-size: 12px;
+        color: #111;
+        text-align: center;
+        padding: 2px;
+        background-color: #ccc;
+        border: none;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
 </style>

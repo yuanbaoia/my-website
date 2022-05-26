@@ -41,4 +41,26 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  #quiz-page{
+    padding: 10px;
+    h2{
+      font-size: 20px;
+      text-align: center;
+    }
+    .main{
+      width: calc(100vw - 60px);
+      margin: 140px 0 30px 0;
+      box-sizing: border-box;
+      h3{
+        margin-bottom: 40px;
+        font-size: 20px;
+        text-align: center;
+      }
+      .btn{
+        padding: 6px 16px;
+      }
+    }
+  }
+}
 </style>

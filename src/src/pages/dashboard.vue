@@ -54,4 +54,9 @@ export default {
   padding: 10px 30px;
   margin-bottom: 20px;
 }
+@media (max-width: 768px) {
+  .title{
+    font-size: 20px;
+  }
+}
 </style>

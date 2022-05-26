@@ -53,4 +53,30 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  #library-page{
+    padding: 10px;
+    h2{
+      font-size: 20px;
+      img{
+        width: 20px;
+      }
+    }
+    .top1{
+      li{
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 10px;
+      }
+    }
+    .top2{
+      li{
+        width: 100%;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
 </style>

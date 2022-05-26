@@ -80,4 +80,41 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  #message-page{
+    padding: 10px;
+    h2{
+      font-size: 14px;
+      margin-bottom: 20px;
+      .first{
+        width: 60px;
+        height: auto;
+        padding-right: 20px;
+      }
+      span{
+        display: flex;
+        padding-top: 10px;
+        padding-right: 20px;
+        img{
+          width: 20px;
+          height: 18px;
+          padding-left: 8px;
+        }
+      }
+    }
+    .list-group{
+      margin-top: 60px;
+      .list-group-item{
+        width: calc(100vw - 60px);
+        box-sizing: border-box;
+        .title{
+          font-size: 14px;
+        }
+        .btn{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
 </style>

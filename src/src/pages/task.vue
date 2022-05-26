@@ -124,4 +124,32 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  #task-page{
+    padding: 0;
+    h3{
+      font-size: 20px;
+    }
+    .operate-box{
+      padding: 0px;
+      .btn-add{
+        font-size: 14px;
+      }
+    }
+    .task-list{
+      padding: 10px;
+      background-color: #fff;
+      li{
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ccc;
+        .item-title{
+          width: 100%;
+          flex: auto;
+          margin-bottom: 8px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
 </style>
