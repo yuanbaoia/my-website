@@ -4,17 +4,28 @@
     <div class="operate-box">
       <span class="btn-add" @click="add">ADD A TASK</span>
     </div>
-    <div class="task-list">
+    <div class="task-list" @dragover="dragover($event)">
       <ul>
-        <li v-for="(item, index) in list" :key="index" :class="{'task-item': true, 'success': item.status}" >
-          <span class="item-title">{{ item.title }}</span>
-          <span class="item-priority">{{ item.priority }}</span>
-          <span class="item-time">{{ item.time }} hours</span>
-          <span class="item-status">
-            <input type="checkbox" name="" v-model="item.status">
-          </span>
-          <span class="item-delete" @click="handleDelete(index)">delete</span>
-        </li>
+        <transition-group class="transition-wrapper" name="sort">
+          <li
+            v-for="(item, index) in list"
+            :key="index"
+            :class="{'task-item': true, 'success': item.status}"
+            :draggable="true"
+            @dragstart="dragstart(item)"
+            @dragenter="dragenter(item,$event)"
+            @dragend="dragend(item,$event)"
+            @dragover="dragover($event)"
+          >
+            <span class="item-title">{{ item.title }}</span>
+            <span class="item-priority">{{ item.priority }}</span>
+            <span class="item-time">{{ item.time }} hours</span>
+            <span class="item-status">
+              <input type="checkbox" name="" v-model="item.status">
+            </span>
+            <span class="item-delete" @click="handleDelete(index)">delete</span>
+          </li>
+        </transition-group>
       </ul>
     </div>
     <Modal ref="modal" @success="handleSuccess" />
@@ -28,10 +39,12 @@ export default {
   components: { Modal },
   data(){
     return {
+      oldData: null,
+      newData: null,
       list: [
-        { title: 'task title description', priority: 'middle', time: 12, status: true },
-        { title: 'task title description', priority: 'high', time: 8, status: false },
-        { title: 'task title description', priority: 'middle', time: 12, status: true },
+        { title: 'task title description1', priority: 'middle', time: 12, status: true },
+        { title: 'task title description2', priority: 'high', time: 8, status: false },
+        { title: 'task title description3', priority: 'middle', time: 12, status: true },
       ]
     }
   },
@@ -49,6 +62,31 @@ export default {
         priority: level,
         status: false
       })
+    },
+    dragstart(value) {
+      this.oldData = value
+    },
+ 
+    dragenter(value, e) {
+      this.newData = value
+      e.preventDefault()
+    },
+ 
+    dragend() {
+      if (this.oldData !== this.newData) {
+        let oldIndex = this.list.indexOf(this.oldData)
+        let newIndex = this.list.indexOf(this.newData)
+        let newItems = [...this.list]
+        // 删除老的节点
+        newItems.splice(oldIndex, 1)
+        // 在列表中目标位置增加新的节点
+        newItems.splice(newIndex, 0, this.oldData)
+        this.list = [...newItems]
+      }
+    },
+ 
+    dragover(e) {
+      e.preventDefault()
     }
   }
 }

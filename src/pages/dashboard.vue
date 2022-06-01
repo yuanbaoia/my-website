@@ -13,11 +13,14 @@
         <li class="list-group-item">IBUS1001-W7-Summary</li>
       </ul>
     </div>
+    <div style="text-align: center">
+      <v-calendar locale="es"/>
+    </div>
   </div>
 </template>
 
 <script>
-
+// import VCalendar from 'v-calendar';
 export default {
   name: 'DashboardPage',
 }

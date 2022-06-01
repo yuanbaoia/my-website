@@ -68,9 +68,11 @@ export default {
       this.miniVisible = true
     },
     changeRoute(path){
-      this.$router.push(path)
-      if(document.documentElement.clientWidth < 768){
-        this.toggle = false
+      if (path !== this.$route.path) {
+        this.$router.push(path)
+        if(document.documentElement.clientWidth < 768){
+          this.toggle = false
+        }
       }
     }
   }
