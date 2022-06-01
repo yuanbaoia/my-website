@@ -2,7 +2,7 @@
   <div id="task-page">
     <h3 class="title">Task List</h3>
     <div class="operate-box">
-      <span class="btn-add">ADD A TASK</span>
+      <span class="btn-add" @click="add">ADD A TASK</span>
     </div>
     <div class="task-list">
       <ul>
@@ -17,13 +17,15 @@
         </li>
       </ul>
     </div>
+    <Modal ref="modal" @success="handleSuccess" />
   </div>
 </template>
 
 <script>
-
+import Modal from '../components/modal.vue'
 export default {
   name: 'TaskPage',
+  components: { Modal },
   data(){
     return {
       list: [
@@ -36,6 +38,17 @@ export default {
   methods: {
     handleDelete(index){
       this.$delete(this.list, index)
+    },
+    add(){
+      this.$refs.modal.show()
+    },
+    handleSuccess({ title, level, time }){
+      this.list.push({
+        title,
+        time,
+        priority: level,
+        status: false
+      })
     }
   }
 }

@@ -43,20 +43,29 @@
     <div class="page-box">
       <router-view />
     </div>
+    <Mini v-show="miniVisible" @close="miniVisible = false" />
+    <div v-show="!miniVisible" class="mini-btn" @click="showMini"></div>
   </div>
 </template>
 
 <script>
+import Mini from './components/mini.vue'
+
 export default {
   name: 'App',
+  components: { Mini },
   data(){
     return {
+      miniVisible: false,
       toggle: false
     }
   },
   methods: {
     showNav(bool){
       this.toggle = bool
+    },
+    showMini(){
+      this.miniVisible = true
     },
     changeRoute(path){
       this.$router.push(path)
@@ -76,6 +85,17 @@ export default {
   // min-height: 100vh;
   padding: 30px 50px;
   background-color: #AB397E;
+}
+.mini-btn{
+  position: fixed;
+  top: 30px;
+  right: 0px;
+  height: 30px;
+  width: 30px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  background-color: #ff9f1c;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   #app {
