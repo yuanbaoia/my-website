@@ -42,9 +42,9 @@ export default {
       oldData: null,
       newData: null,
       list: [
-        { title: 'task title description1', priority: 'middle', time: 12, status: true },
-        { title: 'task title description2', priority: 'high', time: 8, status: false },
-        { title: 'task title description3', priority: 'middle', time: 12, status: true },
+        { title: 'DECO2017 Assignment4', priority: 'middle', time: 12, status: true },
+        { title: 'DECO2014 Assignment3', priority: 'high', time: 8, status: false },
+        { title: 'DeCO2017 Assignment3', priority: 'middle', time: 12, status: true },
       ]
     }
   },

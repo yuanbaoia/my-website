@@ -33,7 +33,7 @@
           <a @click="changeRoute('/library')">Library</a>
         </li>
         <li :class="{ active: $route.path === '/quiz'}">
-          <a @click="changeRoute('/quiz')">Quiz</a>
+          <a @click="changeRoute('/quiz')">Timer</a>
         </li>
         <li :class="{ active: $route.path === '/task'}">
           <a @click="changeRoute('/task')">Task List</a>
