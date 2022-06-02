@@ -13,9 +13,10 @@
         <li class="list-group-item">IBUS1001-W7-Summary</li>
       </ul>
     </div>
-    <div style="text-align: center">
-      <v-calendar locale="es"/>
+    <div class="calender" style="text-align: center;">
+      <v-calendar locale="en-US" />
     </div>
+    <!--  -->
   </div>
 </template>
 
@@ -27,6 +28,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#dashboard-page{
+  position: relative;
+}
 .title{
   color: #272525;
   font-size: 40px;
@@ -50,16 +54,29 @@ export default {
   margin-bottom: 30px;
 }
 .list-group-item{
-  width: 80%;
+  width: 40%;
   background-color: #ED4CAE;
   border-radius: 20px;
   color: #fff;
   padding: 10px 30px;
   margin-bottom: 20px;
 }
+.calender{
+  position: absolute;
+  top: 130px;
+  right: 40px;
+}
 @media (max-width: 768px) {
   .title{
     font-size: 20px;
+  }
+  .list-group-item{
+    width: 80%;
+  }
+  .calender{
+    position: relative;
+    top: 0px;
+    right: 0px;
   }
 }
 </style>
